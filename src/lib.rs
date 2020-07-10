@@ -8,7 +8,7 @@ pub struct Config {
 impl Config {
     pub fn new(mut args: std::env::Args) -> Result<Config, &'static str>{
         let work_time: time::Duration = match args.next() {
-            Some(arg) => time::Duration::new(arg*60,0),
+            Some(arg) => time::Duration::new(arg.parse::<u64>().unwrap()*60,0),
             None => return Err("Please enter work time in seconds"),
         };
 
